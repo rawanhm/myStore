@@ -20,23 +20,23 @@ public class OrderController {
     OrderRepository orderRepository;
 
 
-    @GetMapping("/order")
+    @GetMapping("allorder")
     public List<Order> getAllOrder(){
         List<Order> Orders = orderRepository.findAll();
         return Orders;
     }
-    @GetMapping("/order/{id}")
+    @GetMapping("order/{id}")
     public Order getOrder(@PathVariable Long id){
         return orderRepository.findById(id).get();
     }
 
 
 
-    @PostMapping
-    public ResponseEntity<Order> newOrder(@RequestBody Order order){
+    @PostMapping("new")
+    public Order newOrder(@RequestBody Order order){
 
-            Order orders =orderRepository.save(order);
-            return ResponseEntity.ok(orders);
+            return orderRepository.save(order);
+
         }
     }
 

@@ -20,6 +20,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
  //TODO: Get the product list
+ this.productService.getProducts().subscribe((x) => (this.products = x));
   }
 
   addToCart(product: Product, amount: any): void {

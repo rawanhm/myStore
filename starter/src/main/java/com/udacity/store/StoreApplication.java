@@ -1,19 +1,21 @@
 package com.udacity.store;
 
+import antlr.build.Tool;
+import com.udacity.store.controller.ProductController;
 import com.udacity.store.model.Product;
 import com.udacity.store.repository.ProductRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.core.io.DefaultResourceLoader;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 
-import java.nio.file.Files;
+
+
 
 
 @SpringBootApplication
+@Slf4j
 public class StoreApplication  implements CommandLineRunner {
 
     public static void main(String[] args) {
@@ -21,7 +23,9 @@ public class StoreApplication  implements CommandLineRunner {
         }
 
     @Autowired
-    private ProductRepository productRepository;
+     ProductController productController;
+    @Autowired
+     ProductRepository productRepository;
 
 
     @Override
@@ -29,12 +33,15 @@ public class StoreApplication  implements CommandLineRunner {
         // TODO: Populate the database with products
 
         Product product = new Product(5L,
-                "Cup",
+                "test",
                  4.99,
-                "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                "Drink anything with it!");
+                "https://www.montblanc.com/variants/images/22527730565448096/A/w2500.jpg",
+                "test anything with it!");
+         productController.newproduct(product);
+        log.info("added");
 
-        productRepository.save(product);
 
     }
+
+   
 }

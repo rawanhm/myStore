@@ -9,7 +9,7 @@ import { Order } from '../models/Order';
 export class CartService {
   
   cartProducts: any[] = [];
-  private baseUrl: string = 'http://localhost:8080/orders';
+  private baseUrl: string = 'http://localhost:8080/orders/';
   constructor(private http: HttpClient) { }
 
   getCartProducts() {
@@ -46,7 +46,7 @@ export class CartService {
 
   submitOrder(order: any): Observable<any> {
   //Submit the order information the API
-  return this.http.post<any>(`${this.baseUrl}`, order, {
+  return this.http.post<Order>(this.baseUrl+'new', order, {
     headers: { Authorization: 'Basic dWRhY2l0eTpwYXNzd29yZA==' },
   });
   }

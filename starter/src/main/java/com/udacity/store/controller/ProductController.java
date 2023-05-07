@@ -19,19 +19,19 @@ public class ProductController {
 
     @Autowired
     ProductRepository productRepository;
-    @GetMapping("/product")
+    @GetMapping("product")
     public List<Product> getAllProduct(){
         List<Product> products = productRepository.findAll();
         return products;
     }
 
-    @GetMapping("/product/{id}")
+    @GetMapping("product/{id}")
     public Product getProduct(@PathVariable("id") Long id){
         return  productRepository.findById(id).get();
     }
 
-    @PostMapping
-    public ResponseEntity<Product> newOrder(@RequestBody Product product){
+    @PostMapping("new")
+    public ResponseEntity<Product> newproduct(@RequestBody Product product){
 
         return ResponseEntity.ok(productRepository.save(product));
     }

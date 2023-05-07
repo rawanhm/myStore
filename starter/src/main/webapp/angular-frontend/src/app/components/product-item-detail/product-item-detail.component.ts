@@ -40,7 +40,7 @@ this.productService.getProducts().subscribe((products:Product[])=>{
       id: product.id,
       name: product.name,
       price: product.price,
-      url: product.image,
+      url: product.url,
       amount: parseInt(amount)
     };
 

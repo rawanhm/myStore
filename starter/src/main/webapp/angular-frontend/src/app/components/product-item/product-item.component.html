@@ -1,11 +1,11 @@
 <div class="product-container">
-  <a routerLink="products/{{product.id}}">
-    <img src="{{product.image}}" class="product-image" width="240">
+  <a routerLink="product/{{ product.id }}">
+    <img src="{{ product.url }}" class="product-image" width="240" />
   </a>
-//TODO display name and price
-<h3>{{ product.name }}</h3>
-<h3>{{ product.price }}</h3>
-  <select [(ngModel)]='selectedAmount' class="form-control select-input">
+  <p> {{ product.name }}</p>
+  <p>${{ product.price }}</p>
+
+  <select [(ngModel)]="selectedAmount" class="form-control select-input">
     <option value="1" selected="selected">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
